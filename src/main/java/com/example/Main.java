@@ -4,18 +4,21 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Calculator calculator = new Calculator();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter two numbers:");
-        int a = scanner.nextInt();
-        int b = scanner.nextInt();
+        int num1 = 10; // Default value
+        int num2 = 20; // Default value
 
-        System.out.println("Addition: " + calculator.add(a, b));
-        System.out.println("Subtraction: " + calculator.subtract(a, b));
-        System.out.println("Multiplication: " + calculator.multiply(a, b));
-        System.out.println("Division: " + calculator.divide(a, b));
+        if (System.console() != null) { // Check if running in an interactive console
+            System.out.print("Enter first number: ");
+            num1 = scanner.nextInt();
+            System.out.print("Enter second number: ");
+            num2 = scanner.nextInt();
+        } else {
+            System.out.println("Running in Jenkins, using default values: " + num1 + " and " + num2);
+        }
 
-        scanner.close();
+        int sum = num1 + num2;
+        System.out.println("Sum: " + sum);
     }
 }
